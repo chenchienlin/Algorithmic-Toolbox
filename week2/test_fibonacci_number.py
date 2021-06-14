@@ -1,4 +1,3 @@
-import math
 import random
 import logging
 from week2.fibonacci_number import *
@@ -14,7 +13,3 @@ def test_fib():
         ma = matrix_fib(n)
         LOGGER.info(f'recur_fib: {re}  iter_fib : {it}  matrix_fib : {ma}')
         assert re == it == ma
-
-def test_mem_fib():
-    n = 5
-    me = mem_fib(n)
