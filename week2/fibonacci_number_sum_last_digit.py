@@ -1,18 +1,26 @@
+from week2.fibonacci_number import iter_fib
+def fib_sum_last_digit_naive(n):
+    sum = 0
+    for i in range(0, n+1):
+        sum += iter_fib(i)
+    return sum % 10
+
+
 def iter_fib_sum_last_digit(n):
     if n <= 1:
         return n
     else:
         a, b = 0, 1
         
-        sum = 0
-        sum += b
+        last_digit_sum = 0
+        last_digit_sum += b
         for i in range(2, n+1):
             temp = b
             b = (a + b)%10
             a = temp%10
             
-            sum += b
-        return sum
+            last_digit_sum += b
+        return last_digit_sum % 10
 
 import math
 import numpy as np
@@ -51,6 +59,7 @@ def matrix_fib_sum_last_digit(n):
         last_digit_sum += result[1][0,0] % 10
     
     if n == 2*m:
-        return last_digit_sum - result[1][0,0] % 10
+        last_digit_sum -= result[1][0,0] % 10
+        return last_digit_sum % 10
     elif n == 2*m+1:
-        return last_digit_sum
+        return last_digit_sum % 10

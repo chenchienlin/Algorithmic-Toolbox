@@ -16,4 +16,3 @@ def test_fib_last_digit():
         str_it = str(it)
         answer = int(str_it[-1])
         assert answer == it_last == ma_last
-        

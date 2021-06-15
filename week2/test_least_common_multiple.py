@@ -1,4 +1,3 @@
-import math
 import random
 import logging
 from week2.least_common_multiple import *
