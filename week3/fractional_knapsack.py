@@ -40,10 +40,15 @@ def fractional_knapsack_sort(W, wn, vn):
         frac.append(vn[i]/wn[i])
         amount[str(vn[i])] = 0
     
-    zip_lists = zip(frac, wn, vn)
-    sorted_zip_lists = sorted(zip_lists, reverse=True)
-    frac, wn, vn = zip(*sorted_zip_lists) # zip return tuple and tuple cannot do assignment
-    frac, wn, vn = list(frac), list(wn), list(vn)
+    zipped_lists = zip(frac, wn, vn)
+    sorted_zipped_lists = sorted(zipped_lists, reverse=True)
+    
+    # frac, wn, vn = zip(*sorted_zip_lists) # zip return tuple and tuple cannot do assignment
+    # frac, wn, vn = list(frac), list(wn), list(vn)
+    
+    # Another way to do above
+    sorted_lists = [list(l) for l in zip(*sorted_zipped_lists)]
+    frac, wn, vn = sorted_lists[0], sorted_lists[1], sorted_lists[2]
     
     idx = 0
     V = 0
