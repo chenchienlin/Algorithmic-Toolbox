@@ -1,4 +1,3 @@
-import random
 import logging
 from week3.maximum_advertisement_revenue import *
 logging.basicConfig(level=logging.DEBUG)
