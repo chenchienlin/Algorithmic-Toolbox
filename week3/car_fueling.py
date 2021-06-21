@@ -1,35 +1,18 @@
 def car_fueling(d, m, stops):
-    start, idx = 0, 0
-    count = 0
-    
+    start, idx, count = 0, 0, 0
     while d - start > m:
-        # check if next is reachable
-        if stops[idx+1] - start  > m:
-            print(f'Error')
-            return -1
         
-        # find the farest reachable stop
+        # find the farest reachable gas stop
         while idx+1 < len(stops):
-            if stops[idx+1] - start <= m:
+            if stops[idx+1] - start <= m: # if the next stop is reachable
                 idx += 1
             else: break
         
-        print(f'stopped at {stops[idx]}')
-        start = stops[idx]
+        # check reachability 
+        # if idx is not increased, meaning cannot find reachable stop
+        if stops[idx] == start:
+            return -1
+        
         count += 1
+        start = stops[idx]
     return count
-
-d = 950
-m = 400
-stops = [200, 375, 550, 750]
-print(car_fueling(d, m, stops))
-
-d = 10
-m = 3
-stops = [1, 2, 5, 9]
-print(car_fueling(d, m, stops))
-
-d = 200
-m = 250
-stops = [100, 150]
-print(car_fueling(d, m, stops))
