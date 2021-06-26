@@ -19,27 +19,35 @@ def build_huffman(f):
     return heapq.heappop(f)
 
 def build_huffman2(f):
+    n = len(f)
     pq = f.copy()
     heapq.heapify(pq)
-    L = [0 for i in range(0, len(pq))]
-    R = [0 for i in range(0, len(pq))]
-    P = [0 for i in range(0, 2*len(pq)-1)]
-    for i in range(len(pq), 2*len(pq)-1):
+    L = [0 for i in range(0, 2*n-1)] # L = 0 : 2*n-2
+    R = [0 for i in range(0, 2*n-1)] # R = 0 : 2*n-2
+    P = [0 for i in range(0, 2*n-1)] # P = 0 : 2*n-2
+    
+    for i in range(n, 2*n-1):        # i = n : 2*n-2
         tup_x = heapq.heappop(pq)
         tup_y = heapq.heappop(pq)
         freq_x, x, x_idx = tup_x[0], tup_x[1], tup_x[2]
         freq_y, y, y_idx = tup_y[0], tup_y[1], tup_y[2]
         new_freq = freq_x + freq_y
         heapq.heappush(pq, (new_freq, f'{x}{y}', i))
-        L.append(x_idx)
-        R.append(y_idx)
+        L[i] = x_idx
+        R[i] = y_idx
         P[x_idx] = i
         P[y_idx] = i
+    P[2*n-2] = 0
     return L, R, P
+
+def huffman_encode(x, f, L, P):
+    B = list()
+    huffman_encode_one(x, f, L, P, B)
+    return B 
 
 def huffman_encode_one(x, f, L, P, B):
     if x < 2 * len(f) - 2:
-        huffman_encode_one(P[x])
+        huffman_encode_one(P[x], f, L, P, B)
         if x == L[P[x]]:
             B.append(0)
         else:
