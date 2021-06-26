@@ -1,5 +1,5 @@
 import logging
-from week4.binear_search import *
+from week4.binary_search import *
 logging.basicConfig(level=logging.DEBUG)
 LOGGER = logging.getLogger()
 
