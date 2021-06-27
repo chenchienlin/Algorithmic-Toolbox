@@ -31,3 +31,22 @@ def test_permutation_composition3():
     
     a6 = permutation_composition(a, a5)
     assert a6 == [1,2,3,4,5]
+
+def test_inverse_permutation1():
+    epsilon = [1,2,3,4,5,6,7,8]
+    a = [3,2,7,8,1,4,5,6]
+    b = inverse_permutation(a, epsilon)
+    assert b == [5,2,1,6,7,8,3,4]
+    assert permutation_composition(a, b) == epsilon
+
+def test_associativity():
+    epsilon = [1,2,3,4,5,6,7,8]
+    a = [3,2,7,8,1,4,5,6]
+    b = [5,2,1,6,7,8,3,4]
+    a_inv = inverse_permutation(a, epsilon)
+    b_inv = inverse_permutation(b, epsilon)
+    ab = permutation_composition(a, b)
+    inv_b_inv_a = permutation_composition(b_inv, a_inv)
+    result = permutation_composition(ab, inv_b_inv_a)
+    LOGGER.debug(result)
+    assert result == epsilon
