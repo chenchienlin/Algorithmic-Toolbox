@@ -1,4 +1,6 @@
 def merge(arr, aux, lo, mid, hi):
+    for k in range(lo, hi+1):
+        aux[k] = arr[k]
     i = lo
     j = mid + 1
     for k in range(lo, hi+1):
