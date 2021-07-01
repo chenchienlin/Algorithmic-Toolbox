@@ -16,7 +16,7 @@ def test_mergesort2():
     n = 100
     iter = 100
     for _ in range(iter):
-        arr = sorted([random.randint(lo_range, hi_range) for _ in range(n)])
+        arr = sorted([random.randint(lo_range, hi_range) for _ in range(n)]) 
         mergesort(arr)
         LOGGER.debug(arr)
         assert arr == sorted(arr)
