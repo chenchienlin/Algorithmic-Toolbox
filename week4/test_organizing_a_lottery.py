@@ -53,12 +53,22 @@ def test_organizing_a_lottery1():
     points = [1,6,11]
     assert organizing_a_lottery(segs, points) == [1,0,0]
 
-def test_organizing_a_lottery():
+def test_organizing_a_lottery2():
     segs = [[-10,10]]
     points = [-100, 100,0]
     assert organizing_a_lottery(segs, points) == [0,0,1]
 
-def test_organizing_a_lottery():
+def test_organizing_a_lottery3():
     segs = [[0,5], [-3,2], [7,10]]
     points = [1,6]
     assert organizing_a_lottery(segs, points) == [2,0]
+
+def test_organizing_a_lottery4():
+    segs = [[0,3], [1,3], [3,8]]
+    points = [-1,3,8]
+    assert organizing_a_lottery(segs, points) == [0,3,1]
+
+def test_organizing_a_lottery5():
+    segs = [[1,3], [2,4], [5,7]]
+    points = [0,2,5]
+    assert organizing_a_lottery(segs, points) == [0,2,1]

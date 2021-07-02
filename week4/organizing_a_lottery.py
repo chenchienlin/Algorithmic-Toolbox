@@ -20,7 +20,12 @@ def check_in_a_range(p, segs):
     return in_range
 
 def organizing_a_lottery(segs, points):
-    sorted_points = sorted(points, reverse=True)
+    idxs = [i for i in range(len(points))]
+    zipped_lists = zip(points, idxs)
+    sorted_zipped_lists = sorted(zipped_lists)
+    sorted_lists = [list(tup) for tup in zip(*sorted_zipped_lists)]
+    points = sorted_lists[0]
+    idxs = sorted_lists[1]
     counts = [0 for _ in range(len(points))]
     
     for seg in segs:
@@ -30,7 +35,8 @@ def organizing_a_lottery(segs, points):
         last_idx = find_smaller(points, end)
         if first_idx != -1 and last_idx != -1:
             for idx in range(first_idx, last_idx+1):
-                counts[idx] += 1
+                origin_idx = idxs[idx]
+                counts[origin_idx] += 1
     return counts
 
 def find_greater(arr, target):
