@@ -1,3 +1,8 @@
+import math
+import logging
+from week4.number_of_inversions import LOGGER
+logging.basicConfig(level=logging.DEBUG)
+
 def organizing_a_lottery_naive(segs, points):
     b = []
     for p in points:
@@ -13,3 +18,53 @@ def check_in_a_range(p, segs):
         if p >= head and p <= tail:
             in_range += 1
     return in_range
+
+def organizing_a_lottery(segs, points):
+    sorted_points = sorted(points, reverse=True)
+    counts = [0 for _ in range(len(points))]
+    
+    for seg in segs:
+        start, end = seg[0], seg[1]
+        
+        first_idx = find_greater(points, start)
+        last_idx = find_smaller(points, end)
+        if first_idx != -1 and last_idx != -1:
+            for idx in range(first_idx, last_idx+1):
+                counts[idx] += 1
+    return counts
+
+def find_greater(arr, target):
+    lo = 0
+    hi = len(arr) - 1
+    while hi >= lo:
+        mid = int(math.floor( (lo+hi)/2 ))
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] > target:
+            hi = mid - 1
+        else:
+            lo = mid + 1
+    # Out of while loop, lo > hi
+    if lo <= len(arr) - 1:
+        return lo
+    else:
+        LOGGER.info('Out of range')
+        return -1
+
+def find_smaller(arr, target):
+    lo = 0
+    hi = len(arr) - 1
+    while hi >= lo:
+        mid = int(math.floor( (lo+hi)/2 ))
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] > target:
+            hi = mid - 1
+        else:
+            lo = mid + 1
+    # Out of while loop, lo > hi
+    if hi >= 0:
+        return hi
+    else:
+        LOGGER.info('Out of range')
+        return -1
