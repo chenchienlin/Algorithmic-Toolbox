@@ -1,4 +1,5 @@
 import math
+from random import randint
 import logging
 logging.basicConfig(level=logging.DEBUG)
 LOGGER = logging.getLogger()
@@ -73,3 +74,18 @@ def compute_successors(predecessor, blank_idx=None, initial=None):
             elif initial is not None and puzzle != initial:
                 successors.append(puzzle)
     return successors
+
+def list_to_str(l):
+    return " ".join(str(elem) for elem in l)
+
+def generate_puzzle(max_degree):
+    size = 16
+    puzzle = [i+1 for i in range(size)]
+    for _ in range(max_degree):
+        successors = compute_successors(puzzle)
+        rand = randint(0, len(successors)-1)
+        puzzle = successors[rand]
+    return puzzle
+
+def find_swap(state1, state2):
+    return [i for i in range(len(state1)) if state1[i] != state2[i]]
