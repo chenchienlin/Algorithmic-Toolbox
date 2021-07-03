@@ -11,7 +11,7 @@ def idx_to_xy(idx, n_col=4):
     # [ 8  9 10 11]       [(2,0) (2,1) (2,2) (2,3)]
     # [12 13 14 15]       [(3,0) (3,1) (3,2) (3,3)]
     
-    y = int(math.floor(idx/n_col))
+    y = math.floor(idx/n_col)
     x = idx - y * n_col
     return x, y
 
