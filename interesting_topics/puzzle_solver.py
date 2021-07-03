@@ -38,3 +38,12 @@ def BFSSolver(initial, goal):
         curr = next
     print_puzzle(curr)
     return curr, moves
+
+if __name__ == '__main__':
+    max_degree = 5
+    initial = generate_puzzle(max_degree)
+    goal = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    _, moves = BFSSolver(initial, goal)
+    
+    from interesting_topics.puzzle_solver_pygame import main
+    main(initial, moves)

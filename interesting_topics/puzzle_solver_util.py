@@ -88,4 +88,10 @@ def generate_puzzle(max_degree):
     return puzzle
 
 def find_swap(state1, state2):
-    return [i for i in range(len(state1)) if state1[i] != state2[i]]
+    BLANK = 16
+    move = [i for i in range(len(state1)) if state1[i] != state2[i]]
+    
+    # Let the blank block be the first item in move
+    if state1[move[1]] == BLANK:
+        swap(move,0,1)
+    return move
