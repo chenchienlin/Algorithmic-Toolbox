@@ -16,11 +16,3 @@ def recur_mergesort(arr, aux, lo, hi):
         recur_mergesort(arr, aux, lo, mid)
         recur_mergesort(arr, aux, mid+1, hi)
         merge(arr, aux, lo, mid, hi)
-
-import random
-arr = [5,6,7,8,1,2,3,4]
-aux = arr.copy()
-lo = 0
-hi = len(arr) - 1
-
-# mergesort(arr)
