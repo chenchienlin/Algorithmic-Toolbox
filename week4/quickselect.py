@@ -19,3 +19,14 @@ def quickselect(arr, k):
         else:
             k = k - th - 1
             hi = p - 1
+
+def recur_quickselect(arr, lo, hi, k):
+    p = partition(arr, lo, hi)
+    th = hi - p
+    
+    if th == k:
+        return arr[p]
+    elif th > k:
+        return recur_quickselect(arr, p+1, hi, k)
+    else:
+        return recur_quickselect(arr, lo, p-1, k-th-1)
