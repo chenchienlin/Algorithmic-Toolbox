@@ -60,3 +60,21 @@ def test_detect_all_attack2():
     assert 0 in all_invalid
     assert 1 in all_invalid
     assert 3 in all_invalid
+
+def test_n_queens():
+    #   0   1   2   3      0   1   2   3  
+    # -----------------  -----------------
+    # |   | Q |   |   |  |   |   | Q |   |
+    # -----------------  -----------------
+    # |   |   |   | Q |  | Q |   |   |   |
+    # -----------------  -----------------
+    # | Q |   |   |   |  |   |   |   | Q |
+    # -----------------  -----------------
+    # |   |   | Q |   |  |   | Q |   |   |
+    # -----------------  -----------------
+    ans = []
+    Q = [0 for i in range(4)]
+    curr_row = 0
+    n_queens(Q, curr_row, ans)
+    assert [1,3,0,2] in ans
+    assert [2,0,3,1] in ans
