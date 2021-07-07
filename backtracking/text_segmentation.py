@@ -12,7 +12,9 @@ def splitable(S, i, dictionary):
         substr = S[i:j+1]
         if is_word(substr, dictionary):
             LOGGER.debug(f'{substr} {is_word(substr, dictionary)}')
-            return splitable(S, j+1, dictionary)
+            if splitable(S, j+1, dictionary):
+                return True
+    return False
 
 def construct_text_segmentation(S, i, dictionary):
     if i == len(S):
