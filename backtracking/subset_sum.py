@@ -33,3 +33,20 @@ def subset_sum_clean(X, i, T):
         w = subset_sum_clean(X, i-1, T-X[i])
         wo = subset_sum_clean(X, i-1, T)
     return w or wo
+
+def construct_subset_sum(X, i, T):
+    if T == 0:
+        print('here')
+        return []
+    elif T < 0 or i < 0:
+        return None
+    else:
+        resultw = construct_subset_sum(X, i-1, T-X[i])
+        if resultw is not None:
+            resultw.append(X[i])
+            print('here2')
+            return resultw
+        resultwo = construct_subset_sum(X, i-1, T)
+        if resultwo is not None:
+            return resultwo
+        return None
