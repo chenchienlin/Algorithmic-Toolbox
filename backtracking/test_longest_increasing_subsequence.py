@@ -9,6 +9,7 @@ def test_longest_increasing_subsequence1():
     curr_max = float('-inf')
     assert longest_increasing_subsequence(seq, i, curr_max) == 3
     assert longest_increasing_subsequence2(seq) == 3
+    assert longest_increasing_subsequence3(seq) == 3
 
 def test_longest_increasing_subsequence2():
     seq = [3,2]
@@ -16,6 +17,7 @@ def test_longest_increasing_subsequence2():
     curr_max = float('-inf')
     assert longest_increasing_subsequence(seq, i, curr_max) == 1
     assert longest_increasing_subsequence2(seq) == 1
+    assert longest_increasing_subsequence3(seq) == 1
     
 
 def test_longest_increasing_subsequence3():
@@ -24,6 +26,7 @@ def test_longest_increasing_subsequence3():
     curr_max = float('-inf')
     assert longest_increasing_subsequence(seq, i, curr_max) == 4
     assert longest_increasing_subsequence2(seq) == 4
+    assert longest_increasing_subsequence3(seq) == 4
 
 def test_construct_longest_increasing_subsequence1():
     seq = [3,10,2,1,20]
