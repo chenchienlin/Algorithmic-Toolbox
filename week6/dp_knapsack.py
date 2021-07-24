@@ -60,12 +60,3 @@ def dp_knapsack_without_repetition(W, weights, values):
             currw -= weights[idx]
         curri -= 1
     return table[len(weights)][W], ws, vs
-
-
-W = 10
-weights = [6,3,4,2]
-values = [30,14,16,9]
-# sol, ws, vs = dp_knapsack_with_repetition(W, weights, values)
-# print(ws)
-# print(vs)
-print(dp_knapsack_without_repetition(W, weights, values))
