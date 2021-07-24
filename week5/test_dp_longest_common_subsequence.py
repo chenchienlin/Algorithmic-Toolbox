@@ -14,8 +14,14 @@ def test_dp_longest_common_subsequence2():
     seq2 = "AEDFHR"
     assert dp_longest_common_subsequence(seq1, seq2) == 3
 
-def test_dp_longest_common_subsequence3():
+def test_dp_longest_common_subsequence3_1():
     seq1 = "abcd1e2"  
     seq2 = "bc12ea"  
     seq3 = "bd1ea"
     assert dp_longest_common_subsequence3(seq1, seq2, seq3) == 3
+
+def test_dp_longest_common_subsequence3_2():
+    seq1 = "AGGT12"
+    seq2 = "12TXAYB"
+    seq3 = "12XBA"
+    assert dp_longest_common_subsequence3(seq1, seq2, seq3) == 2
