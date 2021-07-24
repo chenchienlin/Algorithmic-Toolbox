@@ -12,7 +12,20 @@ def dp_knapsack_with_repetition(W, weights, values):
                 val = table[w-weights[i]] + values[i]
                 if val > table[w]:
                     table[w] = val
-    return table[W]
+    
+    # Reconstruct solution
+    curr = W
+    ws = []
+    vs = []
+    while curr > 0:
+        for i in range(len(weights)):
+            if curr-weights[i] >= 0:
+                if table[curr-weights[i]] + values[i] == table[curr]:
+                    curr -= weights[i]
+                    ws.append(weights[i])
+                    vs.append(values[i])
+    assert curr == 0
+    return table[W], ws, vs
 
 def dp_knapsack_without_repetition(W, weights, values):
     # Init memoization data structure
@@ -33,4 +46,26 @@ def dp_knapsack_without_repetition(W, weights, values):
                 val = table[i-1][w-weights[i-1]] + values[i-1]
                 if val > table[i][w]:
                     table[i][w] = val
-    return table[len(weights)][W]
+    
+    # Reconstruct solution
+    curri = len(weights)
+    currw = W
+    ws = []
+    vs = []
+    while curri > 0:
+        idx = curri - 1
+        if table[curri][currw-weights[idx]] + values[idx] == table[curri][currw]:
+            ws.append(weights[idx])
+            vs.append(values[idx])
+            currw -= weights[idx]
+        curri -= 1
+    return table[len(weights)][W], ws, vs
+
+
+W = 10
+weights = [6,3,4,2]
+values = [30,14,16,9]
+# sol, ws, vs = dp_knapsack_with_repetition(W, weights, values)
+# print(ws)
+# print(vs)
+print(dp_knapsack_without_repetition(W, weights, values))
