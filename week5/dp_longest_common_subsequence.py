@@ -6,7 +6,7 @@ def dp_longest_common_subsequence(seq1, seq2):
     # Init memoization data structure
     table = [[-1 for _ in range(len(seq2)+1)] for _ in range(len(seq1)+1)]
     
-    # Compute recurence base case
+    # Compute recurrence base case
     for row in range(len(seq1)+1):
         table[row][0] = 0
     for col in range(len(seq2)+1):
@@ -26,7 +26,7 @@ def dp_longest_common_subsequence3(seq1, seq2, seq3):
     '''
     table = [[[-1 for _ in range(len(seq3)+1)] for _ in range(len(seq2)+1)] for _ in range(len(seq1)+1)]
     
-    # Compute recurence base case
+    # Compute recurrence base case
     for k in range(len(seq3)+1):
         for j in range(len(seq2)+1):
             table[0][j][k] = 0

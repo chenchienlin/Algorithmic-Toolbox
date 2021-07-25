@@ -2,7 +2,7 @@ def dp_knapsack_with_repetition(W, weights, values):
     # Init memoization data structure
     table = [-1 for _ in range(W+1)]
     
-    # Compute recurence base case
+    # Compute recurrence base case
     table[0] = 0
     
     # Compute from i=0:len(weights) w=1:W
@@ -31,7 +31,7 @@ def dp_knapsack_without_repetition(W, weights, values):
     # Init memoization data structure
     table = [[-1 for _ in range(W+1)] for _ in range(len(weights)+1)]
     
-    # Compute recurence base case
+    # Compute recurrence base case
     for row in range(len(weights)+1):
         table[row][0] = 0
     

@@ -12,7 +12,7 @@ def dp_edit_distance(str1, str2):
     max_edit = len(str1) + len(str2)
     table = [[max_edit for _ in range(len(str2)+1)] for _ in range(len(str1)+1)]
     
-    # Compute recurence base case
+    # Compute recurrence base case
     for row in range(len(str1)+1):
         table[row][0] = row
     for col in range(len(str2)+1):
