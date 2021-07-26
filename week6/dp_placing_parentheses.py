@@ -42,3 +42,4 @@ def dp_placing_parentheses(nums, ops):
                     best_max = curr_max
             m[i][j] = best_min
             M[i][j] = best_max
+    return M[i][j], m[i][j]
