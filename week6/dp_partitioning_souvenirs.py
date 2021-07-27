@@ -8,6 +8,7 @@ def dp_partitioning_souvenirs(X, i, Ta, Tb, Tc, memo):
     elif Ta < 0 or Tb < 0 or Tc < 0 or i < 0:
         return False
     elif (i, Ta, Tb, Tc) in memo:
+        LOGGER.debug('In memo')
         return memo[(i, Ta, Tb, Tc)]
     else:
         a, b, c = False, False, False
@@ -19,8 +20,3 @@ def dp_partitioning_souvenirs(X, i, Ta, Tb, Tc, memo):
         result = a or b or c
         memo[(i, Ta, Tb, Tc)] = result
         return memo[(i, Ta, Tb, Tc)]
-
-X = [17,59,34,57,17,23,67,1,18,2,59]
-i = len(X)-1
-T = int(sum(X)/3)
-print(dp_partitioning_souvenirs(X, i, T, T, T, dict()))
