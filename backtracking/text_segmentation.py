@@ -28,3 +28,14 @@ def construct_text_segmentation(S, i, dictionary):
                 result.append(substr)
                 return result
     return None
+
+def count_partition(S, i, dictionary):
+    if i == len(S):
+        return 1
+    count = 0
+    for j in range(i+1, len(S)):
+        substr = S[i:j+1]
+        if is_word(substr, dictionary):
+            LOGGER.debug(f'{substr} {is_word(substr, dictionary)}')
+            count += count_partition(S, j+1, dictionary)
+    return count

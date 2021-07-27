@@ -27,7 +27,7 @@ def test_splitable1():
     i = 0
     assert splitable(S, i, dictionary) == True
 
-def test_construct_text_segmentation():
+def test_construct_text_segmentation1():
     dictionary = {  'BOT', 'BOTH', 'THE', 'HE', 'HEAR', 'HEART', 'HEARTH', 
                     'EARTH', 'ART', 'HAND', 'HANDS', 'AND', 'SATURN', 'AT',
                     'TURN', 'TURNS', 'URN', 'URNS', 'SPIN', 'PIN'}
@@ -37,3 +37,19 @@ def test_construct_text_segmentation():
     LOGGER.debug(segs)
     for seg in segs:
         assert seg in dictionary
+
+def test_count_partition():
+    dictionary = {  'BOT', 'BOTH', 'THE', 'HE', 'HEAR', 'HEART', 'HEARTH', 
+                    'EARTH', 'ART', 'HAND', 'HANDS', 'AND', 'SATURN', 'AT',
+                    'TURN', 'TURNS', 'URN', 'URNS', 'SPIN', 'PIN'}
+    # 1. BOT HE ART
+    # 2. BOT HEART
+    S = 'BOTHEART'
+    i = 0
+    assert count_partition(S, i, dictionary) == 2
+    
+    # 1. HAND SATURN
+    # 2. HANDS AT URN
+    S = 'HANDSATURN'
+    i = 0
+    assert count_partition(S, i, dictionary) == 2
