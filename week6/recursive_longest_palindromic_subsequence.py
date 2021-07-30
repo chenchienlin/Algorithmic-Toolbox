@@ -21,3 +21,20 @@ def recursive_longest_palindromic_subsequence(seq, i, ans):
     ans.pop()
     b = recursive_longest_palindromic_subsequence(seq, i+1, ans)
     return max(a, b)
+
+def recursive_longest_palindromic_subsequence2(seq, i, j):
+    ''' Much better implementation
+    '''
+    if j < i:
+        return 0
+    if seq[i] == seq[j]:
+        a = recursive_longest_palindromic_subsequence2(seq, i+1, j-1)
+        if i == j:
+            a += 1
+        else:
+            a += 2
+        return a
+    else:
+        b = recursive_longest_palindromic_subsequence2(seq, i+1, j)
+        c = recursive_longest_palindromic_subsequence2(seq, i, j-1)
+        return max(b, c)
