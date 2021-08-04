@@ -1,4 +1,3 @@
-
 def dp_longest_increasing_subsequence(seq):
     seq = seq.copy()
     seq.insert(0, float('-inf'))
