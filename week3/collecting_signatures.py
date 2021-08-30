@@ -23,8 +23,12 @@ def collecting_signatures(segments):
                 else: break
             bidx = aidx
 
-segments = [[2, 5], [3, 6], [1, 3]]
-print(collecting_signatures(segments))
-
-segments = [[4, 7], [1, 3], [2, 5], [5, 6]]
-print(collecting_signatures(segments))
+def collecting_signatures2(segments):
+    segments.sort(key = lambda x:x[1])
+    points = []
+    start_idx = 0
+    while start_idx < len(segments):
+        points.append(segments[start_idx][1])
+        while start_idx < len(segments) and segments[start_idx][0] <= points[-1]:
+            start_idx += 1
+    return points
