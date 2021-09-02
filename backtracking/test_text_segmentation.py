@@ -53,3 +53,35 @@ def test_count_partition():
     S = 'HANDSATURN'
     i = 0
     assert count_partition(S, i, dictionary) == 2
+
+def test_construct_all_segmentations1():
+    dictionary = ["cat","cats","and","sand","dog"]
+    S = "catsanddog"
+    i = 0
+    assert construct_all_segmentations(S, i, dictionary) == ['cat sand dog', 'cats and dog']
+    
+    dictionary = ["cat","and","sand","dog"]
+    S = "catsanddog"
+    i = 0
+    assert construct_all_segmentations(S, i, dictionary) == ['cat sand dog']
+    
+    dictionary = ["cats","and","sand","dog"]
+    S = "catsanddog"
+    i = 0
+    assert construct_all_segmentations(S, i, dictionary) == ['cats and dog']
+
+def test_construct_all_segmentations2():
+    dictionary = ["apple","pen","applepen","pine","pineapple"]
+    S = "applepenapple"
+    i = 0
+    assert construct_all_segmentations(S, i, dictionary) == ['apple pen apple', 'applepen apple']
+    
+    S = "pineapplepenapple"
+    i = 0
+    assert construct_all_segmentations(S, i, dictionary) == ['pine apple pen apple', 'pine applepen apple', 'pineapple pen apple']
+
+def test_construct_all_segmentations3():
+    dictionary = ["cats","dog","sand","and","cat"]
+    S = "catsandog"
+    i = 0
+    assert construct_all_segmentations(S, i, dictionary) == []

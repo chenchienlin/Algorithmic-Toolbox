@@ -29,6 +29,23 @@ def construct_text_segmentation(S, i, dictionary):
                 return result
     return None
 
+def construct_all_segmentations(S, i, dictionary):
+    if i == len(S):
+        return ""
+    results = []
+    for j in range(i, len(S)):
+        substr = S[i:j+1]
+        if is_word(substr, dictionary):
+            result = construct_all_segmentations(S, j+1, dictionary)
+            if isinstance(result, str):
+                result = f"{substr}{result}"
+                results.append(result)
+            elif isinstance(result, list):
+                for res in result:
+                    res = f"{substr} {res}"
+                    results.append(res)
+    return results
+
 def count_partition(S, i, dictionary):
     if i == len(S):
         return 1
