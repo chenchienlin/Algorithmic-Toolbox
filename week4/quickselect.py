@@ -9,24 +9,28 @@ def quickselect(arr, k):
     if k < lo or k > hi: return -1
     while hi >= lo:
         p = partition(arr, lo, hi)
-        th = hi - p
-        LOGGER.debug(f'Index {p}  Value {arr[p]}  {th}_th largest element')
-        if th == k: 
-            LOGGER.debug(f'Found {k}_th largest element  Value {arr[th]}')
+        if k == p:
             return arr[p]
-        elif th > k:
-            lo = p + 1
-        else:
-            k = k - th - 1
+        if k < p:
             hi = p - 1
+        else:
+            lo = p + 1
 
 def recur_quickselect(arr, lo, hi, k):
     p = partition(arr, lo, hi)
-    th = hi - p
     
-    if th == k:
+    if k == p:
         return arr[p]
-    elif th > k:
-        return recur_quickselect(arr, p+1, hi, k)
+    elif k < p:
+        return recur_quickselect(arr, lo, p-1, k)
     else:
-        return recur_quickselect(arr, lo, p-1, k-th-1)
+        return recur_quickselect(arr, p+1, hi, k)
+
+def find_kth_largest(nums, k):
+    k = len(nums) - k
+    return quickselect(nums, k)
+
+def recur_find_kth_largest(nums, k):
+    k = len(nums) - k
+    lo, hi = 0, len(nums) - 1
+    return recur_quickselect(nums, lo, hi, k)
