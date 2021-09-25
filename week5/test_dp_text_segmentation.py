@@ -36,3 +36,36 @@ def test_memo_splitable1():
     memo = dict()
     assert memo_splitable(S, i, dictionary, memo) == True
     assert dp_splitable(S, dictionary) == True
+
+
+def test_dp_splitable21():
+    dictionary = ["cat","cats","and","sand","dog"]
+    S = "catsanddog"
+    i = 0
+    assert dp_splitable2(S, dictionary) == ['cat sand dog', 'cats and dog']
+    
+    dictionary = ["cat","and","sand","dog"]
+    S = "catsanddog"
+    i = 0
+    assert dp_splitable2(S, dictionary) == ['cat sand dog']
+    
+    dictionary = ["cats","and","sand","dog"]
+    S = "catsanddog"
+    i = 0
+    assert dp_splitable2(S, dictionary) == ['cats and dog']
+
+def test_dp_splitable22():
+    dictionary = ["apple","pen","applepen","pine","pineapple"]
+    S = "applepenapple"
+    i = 0
+    assert dp_splitable2(S, dictionary) == ['apple pen apple', 'applepen apple']
+    
+    S = "pineapplepenapple"
+    i = 0
+    assert dp_splitable2(S, dictionary) == ['pine apple pen apple', 'pine applepen apple', 'pineapple pen apple']
+
+def test_dp_splitable23():
+    dictionary = ["cats","dog","sand","and","cat"]
+    S = "catsandog"
+    i = 0
+    assert dp_splitable2(S, dictionary) == []
